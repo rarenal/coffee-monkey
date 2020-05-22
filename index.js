@@ -17,7 +17,7 @@ const app = new App({
 
 (async () => {
   await app.start(process.env.PORT || 3000);
-  console.log('⚡️ CofeeMonkey app is running in heroku!');
+  console.log('⚡️ CofeeMonkey app is running in heroku :)!');
 })();
 
 app.action('accept', async (payload) => {
