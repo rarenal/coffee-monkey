@@ -54,7 +54,7 @@ app.action('RSVP', async (payload) => {
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-				"text": ":coffee: :monkey: *The CoffeeMonkey has chosen this week folks*"
+				"text": ":coffee: :monkey: *The CoffeeMonkey has chosen this week folks* (from heroku)"
 			}
 		},
 		...randomMembers.map((member, index) => ({
