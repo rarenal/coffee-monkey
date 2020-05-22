@@ -7,7 +7,7 @@ const actions = require('./actions');
 const messages = require('./messages');
 const utils = require('./utils');
 
-const channel = 'G011UBPMT8U';
+const channel = 'CH34Y9ZPV';
 const numberOfParticipants = 2;
 
 const app = new App({
