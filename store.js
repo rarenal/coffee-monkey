@@ -1,35 +1,16 @@
-// This is not a real datastore, but it can be if you make it one :)
+// Storage API
+const fs = require('fs');
 
-let messages = {}
-let users = {}
-let me = undefined
-let defaultChannel = undefined
+exports.getUnsubscribed = () => {
+  const unsubscribedUsers = fs.readFileSync('unsubscribed_users.json', 'utf8');
 
-exports.getMessages = () => {
-  return messages
+  return JSON.parse(unsubscribedUsers);
 }
 
-exports.addUser = (user) => {
-  users[user.user] = user
+exports.unsubscribe = async (userId) => {
+  const unsubscribedUsers = JSON.parse(fs.readFileSync('unsubscribed_users.json', 'utf8'));
+  unsubscribedUsers.push(userId);
+  
+  const newJson = JSON.stringify(unsubscribedUsers);
+  return fs.writeFileSync('unsubscribed_users.json', newJson, 'utf8');
 }
-
-exports.getUser = (id) => {
-  return users[id]
-}
-
-exports.setChannel = (channel) => {
-  defaultChannel = channel
-}
-
-exports.getChannel = () => {
-  return defaultChannel
-}
-
-exports.setMe= (id) => {
-  me = id
-}
-
-exports.getMe= () => {
-  return me
-}
-
