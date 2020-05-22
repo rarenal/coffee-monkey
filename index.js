@@ -7,7 +7,7 @@ const actions = require('./actions');
 const messages = require('./messages');
 const utils = require('./utils');
 
-const channel = 'CH34Y9ZPV';
+const channel = 'G011UBPMT8U';
 const numberOfParticipants = 2;
 
 const app = new App({
@@ -62,16 +62,16 @@ app.action('cancel', async (payload) => {
     channel,
     limit: 1000
   });
-  
+
   if (users.members.length < numberOfParticipants) {
     return;
   }
-  
+
   const unsubscribedUsers = store.getUnsubscribed();
   const eligibleMembers = lodash.difference(users.members, unsubscribedUsers);
   console.log(eligibleMembers);
   const randomMembers = utils.getUniqueRandomMembers(numberOfParticipants, eligibleMembers);
-  
+
   app.client.chat.postMessage(messages.meetingMessage(channel, randomMembers));
 })();
 
