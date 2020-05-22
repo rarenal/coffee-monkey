@@ -13,11 +13,11 @@ const coffeeRoles = ['*magic lizard* :lizard:', '*glamorous octopus* :octopus:',
 app.action('RSVP', async (payload) => {
   const rsvpUser = payload.body.actions[0].value;
   const actionUser = payload.body.user;
-  
+
   if (rsvpUser === actionUser.id) {
     const messageId = payload.body.message.ts;
     const messageBlocks = payload.body.message.blocks;
-    
+
     await app.client.chat.update({
       token: process.env.SLACK_BOT_TOKEN,
       channel,
@@ -29,19 +29,20 @@ app.action('RSVP', async (payload) => {
   await payload.ack();
 });
 
-scheduler.scheduleJob({hour: 7, minute: 0, dayOfWeek: 1}, async () => {
+//scheduler.scheduleJob({hour: 7, minute: 0, dayOfWeek: 1}, async () => {
+  (async () => {
   const users = await app.client.conversations.members({
     token: process.env.SLACK_BOT_TOKEN,
     channel,
     limit: 1000
   });
-  
+
   if (users.members.length < 5) {
     return;
   }
-  
+
   const randomMembers = getUniqueRandomMembers(5, users.members);
-  
+
   app.client.chat.postMessage({
     token: process.env.SLACK_BOT_TOKEN,
     channel,
@@ -88,7 +89,8 @@ scheduler.scheduleJob({hour: 7, minute: 0, dayOfWeek: 1}, async () => {
 		}
 	]
   });
-});
+})();
+//});
 
 app.event('member_joined_channel', ({ event, say }) => {
   say(`Hello world :coffee:🐵! and welcome our new member <@${event.user}>!:tada:`);
@@ -110,7 +112,7 @@ const messageWithRSVP = (rsvpUser, messageId, messageBlocks) => {
       },
       accessory: undefined,
     };
-    
+
   return messageBlocks.map((block) => block.block_id === rsvpUser ? newMessage : block);
 }
 
@@ -129,6 +131,6 @@ const getUniqueRandomIndex = (previous, length) => {
   if (previous.includes(randomIndex)) {
     return getUniqueRandomIndex(previous, length);
   }
-  
+
   return randomIndex;
 }
