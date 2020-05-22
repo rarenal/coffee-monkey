@@ -108,7 +108,7 @@ const messageWithRSVP = (rsvpUser, messageId, messageBlocks) => {
       ...messageToChange[0],
       text: {
         ...messageToChange[0].text,
-        text: `:white_check_mark: :white_check_mark: :white_check_mark: ${messageToChange[0].text.text}`
+        text: `:white_check_mark: :white_check_mark: ${messageToChange[0].text.text}`
       },
       accessory: undefined,
     };
