@@ -2,7 +2,7 @@ const { App } = require('@slack/bolt');
 const store = require('./store');
 const scheduler = require('node-schedule');
 
-const channel = 'C8011H4KG';
+const channel = 'CH34Y9ZPV';
 const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   token: process.env.SLACK_BOT_TOKEN
@@ -37,11 +37,11 @@ app.action('RSVP', async (payload) => {
     limit: 1000
   });
 
-  if (users.members.length < 5) {
+  if (users.members.length < 2) {
     return;
   }
 
-  const randomMembers = getUniqueRandomMembers(5, users.members);
+  const randomMembers = getUniqueRandomMembers(2, users.members);
 
   app.client.chat.postMessage({
     token: process.env.SLACK_BOT_TOKEN,
