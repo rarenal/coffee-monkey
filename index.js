@@ -7,8 +7,8 @@ const actions = require('./actions');
 const messages = require('./messages');
 const utils = require('./utils');
 
-const channel = 'G011UBPMT8U';
-const numberOfParticipants = 2;
+const channel = 'G013D5DCKRU';
+const numberOfParticipants = 5;
 
 const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -55,8 +55,7 @@ app.action('cancel', async (payload) => {
   await actions.cancel(app, channel, payload);
 });
 
-//scheduler.scheduleJob("* * * * *", async () => {
-(async () => {
+scheduler.scheduleJob({hour: 7, minute: 0, dayOfWeek: 1}, async () => {
   const users = await app.client.conversations.members({
     token: process.env.SLACK_BOT_TOKEN,
     channel,
@@ -69,11 +68,10 @@ app.action('cancel', async (payload) => {
 
   const unsubscribedUsers = store.getUnsubscribed();
   const eligibleMembers = lodash.difference(users.members, unsubscribedUsers);
-  console.log(eligibleMembers);
   const randomMembers = utils.getUniqueRandomMembers(numberOfParticipants, eligibleMembers);
 
   app.client.chat.postMessage(messages.meetingMessage(channel, randomMembers));
-})();
+});
 
 app.event('member_joined_channel', ({ event, say }) => {
   say(`Hello world :coffee:🐵! and welcome our new member <@${event.user}>!:tada:`);
