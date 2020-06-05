@@ -263,3 +263,370 @@ exports.messageWithNewMember = (rsvpUser, messageId, messageBlocks, blockId, new
   );
   */
 };
+
+exports.messageSetup = (channel) => {
+  const message = 
+    {
+    "title": {
+      "type": "plain_text",
+      "text": "CoffeeMonkey"
+    },
+    "submit": {
+      "type": "plain_text",
+      "text": "Set up",
+    },
+    "blocks": [
+      {
+        "block_id": "number_of_participants",
+        "type": "input",
+        "element": {
+          "type": "static_select",
+          "action_id": "participants-value",
+          "placeholder": {
+            "type": "plain_text",
+            "text": "Select number of participants",
+            "emoji": true
+          },
+          "options": [
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Two (2)",
+                "emoji": true
+              },
+              "value": "2"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Three (3)",
+                "emoji": true
+              },
+              "value": "3"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Four (4)",
+                "emoji": true
+              },
+              "value": "4"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Five (5)",
+                "emoji": true
+              },
+              "value": "5"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Six (6)",
+                "emoji": true
+              },
+              "value": "6"
+            },
+            {
+              "text": {
+                "type": "plain_text",
+                "text": "Seven (7)",
+                "emoji": true
+              },
+              "value": "7"
+            }
+          ]
+        },
+        "label": {
+          "type": "plain_text",
+          "text": "Number of users to select",
+          "emoji": true
+        }
+      },
+      {
+			  "type": "divider"
+		  },
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": "*Schedule*"
+        }
+      },
+      {
+			  "type": "divider"
+		  },
+      {
+        "block_id": "day_of_the_week",
+        "type": "input",
+        "element":
+          {
+            "type": "static_select",
+            "action_id": "day-value",
+            "placeholder": {
+              "type": "plain_text",
+              "text": "Select Day of the week",
+              "emoji": true,
+            },
+            "options": [
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "Every monday",
+                  "emoji": true
+                },
+                "value": "1"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "Every tuesday",
+                  "emoji": true
+                },
+                "value": "2"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "Every wednesday",
+                  "emoji": true
+                },
+                "value": "3"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "Every thursday",
+                  "emoji": true
+                },
+                "value": "4"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "Every friday",
+                  "emoji": true
+                },
+                "value": "5"
+              }
+            ]
+          },
+          "label": {
+            "type": "plain_text",
+            "text": "Day of the week",
+            "emoji": true
+          }
+        },
+        {
+          "block_id": "hour_of_the_day",
+          "type": "input",
+          "element":
+          {
+            "type": "static_select",
+            "action_id": "hour-value",
+            "placeholder": {
+              "type": "plain_text",
+              "text": "Select hour",
+              "emoji": true
+            },
+            "options": [
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "01:00am (UTC)",
+                  "emoji": true
+                },
+                "value": "1"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "02:00am (UTC)",
+                  "emoji": true
+                },
+                "value": "2"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "03:00am (UTC)",
+                  "emoji": true
+                },
+                "value": "3"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "04:00am (UTC)",
+                  "emoji": true
+                },
+                "value": "4"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "05:00am (UTC)",
+                  "emoji": true
+                },
+                "value": "5"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "06:00am (UTC)",
+                  "emoji": true
+                },
+                "value": "6"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "07:00am (UTC)",
+                  "emoji": true
+                },
+                "value": "7"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "08:00am (UTC)",
+                  "emoji": true
+                },
+                "value": "8"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "09:00am (UTC)",
+                  "emoji": true
+                },
+                "value": "9"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "11:00am (UTC)",
+                  "emoji": true
+                },
+                "value": "10"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "11:00am (UTC)",
+                  "emoji": true
+                },
+                "value": "11"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "12:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "12"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "01:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "13"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "02:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "14"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "03:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "15"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "04:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "16"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "05:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "17"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "06:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "18"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "07:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "19"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "08:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "20"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "09:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "21"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "10:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "22"
+              },
+              {
+                "text": {
+                  "type": "plain_text",
+                  "text": "11:00pm (UTC)",
+                  "emoji": true
+                },
+                "value": "23"
+              }
+            ]
+          },
+          "label": {
+          "type": "plain_text",
+          "text": "Hour of the day",
+          "emoji": true
+        }
+      }
+    ],
+    callback_id: 'set_up',
+    "type": "modal",
+    private_metadata: channel
+  }
+  return message;
+}
