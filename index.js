@@ -9,6 +9,7 @@ const utils = require('./utils');
 
 const runtimeSchedulers = [];
 
+
 const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   token: process.env.SLACK_BOT_TOKEN
@@ -16,7 +17,7 @@ const app = new App({
 
 (async () => {
   await app.start(process.env.PORT || 3000);
-  console.log('⚡️ CofeeMonkey app is running!');
+  console.log('⚡️ CofeeMonkey app is running in heroku :)!');
 })();
 
 const createScheduler = async (channel, schedule, numberOfMembers) => {
@@ -144,3 +145,4 @@ app.action('cancel', async (payload) => {
     await createScheduler(job.channel, job.schedule, job.members);
   });
 })();
+
